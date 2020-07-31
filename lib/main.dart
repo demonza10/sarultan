@@ -1,14 +1,14 @@
-import 'package:queue1/components/card.dart';
-import 'package:queue1/components/discount.dart';
-import 'package:queue1/components/horizontal.dart';
+import 'package:queue1/homepage/card.dart';
+import 'package:queue1/homepage/discount.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:queue1/components/horizontal2.dart';
+import 'package:queue1/homepage/horizontal.dart';
+import 'package:queue1/homepage/horizontal2.dart';
 
-import 'package:queue1/components/promotion.dart';
+import 'package:queue1/homepage/style.dart';
 
 void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Queue',
       home: HomePage(),
     ));
@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       //   title: Text('Queue App'),
       // ),
+
       body: ListView(
         children: <Widget>[
           Stack(
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.red,
+                      color: Colors.white70,
                     ),
                     child: TextField(
                       decoration: InputDecoration(
@@ -98,15 +99,14 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-              HorizontalList2(),
-              SizedBox(
-                height: 20,
-              ),
               Container(
-                margin: EdgeInsets.only(right: 50.0),
                 child: Text(
-                  "ส่วนลด(ร้านค้าที่ร่วมรายการ)",
-                  style: kTitleStyle,
+                  "ส่วนลด(ร้านที่ร่วมรายการ)",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               DiscountList(),
@@ -129,13 +129,25 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 height: 320.0,
-                child: Products(),
-              )
+                child: StorePage(),
+              ),
               // Products(),
             ],
           )
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.pages),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('Home')),
+      ]),
     );
+    // CustomBottomBar();
   }
 }
